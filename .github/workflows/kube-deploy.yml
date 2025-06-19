@@ -29,28 +29,28 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: 🏗️ Initialize Terraform
-        working-directory: KubNet
+        working-directory: KubeNet
         run: terraform init
 
       - name: 🧪 Terraform Format Check
-        working-directory: KubNet
+        working-directory: KubeNet
         run: terraform fmt -check
 
       - name: 📋 Terraform Validate
-        working-directory: KubNet
+        working-directory: KubeNet
         run: terraform validate
 
       - name: 📈 Terraform Plan
-        working-directory: KubNet
+        working-directory: KubeNet
         run: terraform plan -out=tfplan
 
       - name: 🚀 Terraform Apply
-        working-directory: KubNet
+        working-directory: KubeNet
         run: terraform apply -auto-approve tfplan
 
       - name: ⏳ Wait 30 minutes before cleanup
         run: sleep 1800
 
       - name: 🧹 Cleanup
-        working-directory: KubNet
+        working-directory: KubeNet
         run: terraform destroy -auto-approve
